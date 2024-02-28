@@ -1,7 +1,10 @@
 package ex_240228;
 
 public class Test1 {
-
+	// 파일명과 해당 클래스명은 동일해야 함
+	// 만약 틀린다면 문법 검사기가 오류를 체크해 줌
+	// -> 모든 문법을 전부 알려고 하지 않아도 됨
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
