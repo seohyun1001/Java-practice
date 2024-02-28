@@ -88,6 +88,56 @@ public class Ex_2_Variable {
 		Person lsyPerson = new Person("이상용", "lsy@naver.com");
 		lsyPerson.doDance();
 		lsyPerson.showInfo();
+		
+		
+		
+		// 특수 문자 출력해보기
+		System.out.println("특수 문자 \b : " + '\b');
+		System.out.println("특수 문자 \t : " + '\t' + "샘플");
+		System.out.println("특수 문자 \n : " + '\n' + "샘플");
+		System.out.println("특수 문자 \f : " + '\f' + "샘플");
+		System.out.println("특수 문자 \r : " + '\r' + "샘플");
+		System.out.println("특수 문자 \" : " + '\"' + "샘플");
+		System.out.println("특수 문자 \\ : " + '\\' + "샘플");
+		
+		
+		
+		// null : 레퍼런스가 할당이 아직 안 됨
+		//	기본형에서 사용 안 함
+		String strTest = null;
+		
+		
+		
+		// 상수 : 변하지 않는 수
+		// final 키워드를 사용하여 선언.
+		// 선언 시 초기값을 설정하며, 재할당이 불가하다
+		final int finalNum = 0;
+		
+		
+		
+		// var 동적 변수 할당 : 일단 패스
+		
+		
+		
+		// 타입 변환(캐스팅)
+		// 작은 집 -> 큰 집 : 문제x
+		// 큰 집 -> 작은 집 : 문제o
+
+		// 타입 변환 테스트
+		// 작은 집 -> 큰 집(문제x)
+		byte byteNum = 10;
+		long longNum = byteNum;
+		System.out.println("작은 집 -> 큰 집(문제x) : " + longNum);
+		
+		// 큰 집 -> 작은 집(문제o) -> 강제 형 변환시킴
+		int intNum = 130;
+		byte byteNum2 = (byte)intNum;
+		System.out.println("큰 집 -> 작은 집(문제o) : " + byteNum2);
+		
+		// 레퍼런스에서는 포함관계로 설명을 하는데,
+		// 상속에 대해서 설명 후 구체적으로 하기
+		// 부모 클래스 / 자식 클래스 개념이 나오고
+		// 자식 타입 -> 부모 타입 or 부모 타입 -> 자식 타입
 
 	}
 
