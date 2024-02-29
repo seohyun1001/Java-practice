@@ -21,6 +21,8 @@ public class Ex_3_for {
 				System.out.println("결과는 : " + result);
 			} else if (number == 2) {
 				System.out.println("프로그램을 종료합니다.");
+				// 사용 안 하는 메모리는 반납을 꼭 해주기
+				scanner.close();
 				break;
 			} else {
 				System.out.println("*주의) 숫자는 1 또는 2 중에서 입력해주세요.");
