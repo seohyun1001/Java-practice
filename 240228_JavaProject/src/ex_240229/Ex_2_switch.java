@@ -4,7 +4,7 @@ import java.security.PublicKey;
 import java.util.Scanner;
 import java.util.function.BiConsumer;
 
-public class Ex_1_if {
+public class Ex_2_switch {
 
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
