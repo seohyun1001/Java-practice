@@ -8,51 +8,35 @@ public class Ex_2_switch {
 
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
-		System.out.println("HTML,CSS,JS,JAVA 과목 점수, (1~4)학년, 이름 입력하기(예: 100 70 80 90 4 김서현)");
-		int htmlScore = scanner.nextInt();
-		int cssScore = scanner.nextInt();
-		int jsScore = scanner.nextInt();
-		int javaScore = scanner.nextInt();
-		
-		int year = scanner.nextInt();
-		String nameString = scanner.next();
+		System.out.println("======= 날씨에 따른 메뉴 선택하기 =======");
+		System.out.println("숫자를 선택하세요");
+		System.out.println("1.sunny, 2. cloudy, 3.rainy, 4:default");
+		int pickNumber = scanner.nextInt();
+		String resultPickMenuString = pickLunchMenuWeather(pickNumber);
+		System.out.println("오늘 점심은 : " + resultPickMenuString);
+	}
+	
+	
+	// 날씨에 따라 메뉴를 정해주는 프로그램 만들기
+	public static String pickLunchMenuWeather(int number) {
+		switch (number) {
+		case 1:
+			String menuString = "된장찌개";
+			return menuString;
 
-		String result = toAvgTotalScore(htmlScore, cssScore, jsScore, javaScore);
-		int resultAvgScore = toAvgScore(htmlScore, cssScore, jsScore, javaScore);
+		case 2:
+			String menuString2 = "김밥";
+			return menuString2;
 
-		System.out.println(result);
+		case 3:
+			String menuString3 = "삼선우동";
+			return menuString3;
 
-		if (resultAvgScore >= 90) {
-			System.out.println(nameString + "님의 결과 : 합격(A 등급)");
-		} else if (resultAvgScore >= 80 && resultAvgScore < 90) {
-			System.out.println(nameString + "님의 결과 : 합격(B 등급)");
-		} else if (resultAvgScore >= 70 && resultAvgScore < 80) {
-			if(year != 4) {
-				// 1~3학년까지는 합격
-				System.out.println(nameString + "님의 결과 : 합격(C 등급)");
-			} else {
-			System.out.println(nameString + "님의 결과 : 불합격");
-			}
-		} else if (resultAvgScore >= 60 && resultAvgScore < 70) {
-			System.out.println(nameString + "님의 결과 : 합격(D 등급)");
-		} else {
-			System.out.println(nameString + "님의 결과 : 불합격");
+		default:
+			String menuString4 = "돼지국밥";
+			return menuString4;
 		}
 	}
 
-	// 성적을 입력해서, 총점, 평균을 구하는 간단한 함수
-	// HTML, CSS, JS, JAVA , 4과목에 대한 점수를 입력 받아서, 반환하기.
-	public static String toAvgTotalScore(int html, int css, int js, int java) {
-		int resultTotalScore = html + css + js + java;
-		int resultAvgScore = resultTotalScore / 4;
-		String result = "결과 점수 , 총점 : " + resultTotalScore + "점, 평균 : " + resultAvgScore + " 점";
-		return result;
-	}
-
-	public static int toAvgScore(int html, int css, int js, int java) {
-		int resultTotalScore = html + css + js + java;
-		int resultAvgScore = resultTotalScore / 4;
-		return resultAvgScore;
-	}
 
 }
