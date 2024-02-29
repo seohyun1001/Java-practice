@@ -36,13 +36,10 @@ public class Ex_8_array3 {
 			sum += intArray[i];
 		}
 		
-		System.out.print("최대값 : " + max);
-		System.out.println();
-		System.out.print("최소값 : " + min);
-		System.out.println();
-		System.out.print("합계 : " + sum);
-		System.out.println();
-		System.out.print("평군 : " + sum/intArray.length);
+		System.out.println("최대값 : " + max);
+		System.out.println("최소값 : " + min);
+		System.out.println("합계 : " + sum);
+		System.out.println("평군 : " + sum/intArray.length);
 		scanner.close();
 	}
 }
