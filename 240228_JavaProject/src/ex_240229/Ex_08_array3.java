@@ -2,7 +2,7 @@ package ex_240229;
 
 import java.util.Scanner;
 
-public class Ex_8_array3 {
+public class Ex_08_array3 {
 
 	public static void main(String[] args) {
 		// 양수 5개 입력받아서 최대값, 최소값, 합계, 평균 구하기

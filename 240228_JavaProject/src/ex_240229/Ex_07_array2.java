@@ -1,6 +1,6 @@
 package ex_240229;
 
-public class Ex_7_array2 {
+public class Ex_07_array2 {
 
 	public static void main(String[] args) {
 

@@ -2,7 +2,7 @@ package ex_240229;
 
 import java.util.Scanner;
 
-public class Ex_3_for {
+public class Ex_03_for {
 
 	public static void main(String[] args) {
 		while (true) {

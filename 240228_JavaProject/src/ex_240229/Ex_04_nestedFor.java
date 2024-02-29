@@ -2,7 +2,7 @@ package ex_240229;
 
 import java.util.Scanner;
 
-public class Ex_4_nestedFor {
+public class Ex_04_nestedFor {
 
 	public static void main(String[] args) {
 

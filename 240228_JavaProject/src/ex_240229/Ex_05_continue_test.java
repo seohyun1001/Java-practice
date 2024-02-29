@@ -2,7 +2,7 @@ package ex_240229;
 
 import java.util.Scanner;
 
-public class Ex_5_continue_test {
+public class Ex_05_continue_test {
 
 	public static void main(String[] args) {
 		while (true) {
