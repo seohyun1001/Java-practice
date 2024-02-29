@@ -21,8 +21,8 @@ public class Ex_04_nestedFor {
 				// 입력 받은 수로 구구단 출력하기
 				System.out.println("숫자를 입력해주세요 >>");
 				int number2 = scanner.nextInt();
-				int result = gugudan(number2);
-				System.out.println("결과는 : " + result);
+					gugudan(number2);
+				
 			} else if (number == 2) {
 				System.out.println("프로그램을 종료합니다.");
 				// 사용 안 하는 메모리는 반납을 꼭 해주기
@@ -35,18 +35,14 @@ public class Ex_04_nestedFor {
 	}
 
 	// 입력 받은 수로 구구단 출력하기
-	public static int gugudan(int Number) {
+	public static void gugudan(int Number) {
 		// 중첩 for 문 활용하기
-		int multiple = 0;
 		for (int i = 1; i <= Number; i++) {
-			for (int j = 1; j > 10; j++) {
-				multiple = i * j;
-				System.out.println(i + "x" + j + "=" + multiple);
+			for (int j = 1; j < 10; j++) {
+				System.out.print(i + "x" + j + "=" + i*j);
 				System.out.println('\t');
 			}
 			System.out.println(); // 한단 끝나면 줄넘김
 		}
-		return multiple;
 	}
-
 }
