@@ -1,6 +1,6 @@
 package ex_240306;
 
-public class Ex_5_interface_subClass_1 implements Ex_5_interface_1{
+public class Ex_05_interface_subClass_1 implements Ex_05_interface_1{
 
 	@Override
 	public void showInfo() {

@@ -1,10 +1,10 @@
 package ex_240306;
 
-public class Ex_5_interface_main_1 {
+public class Ex_06_interface_main_2 {
 
 	public static void main(String[] args) {
 		// 인터페이스를 구현한 자식 클래스를 사용
-		Ex_5_interface_subClass_1 test1 = new Ex_5_interface_subClass_1();
+		Ex_05_interface_subClass_1 test1 = new Ex_05_interface_subClass_1();
 		test1.introduceInfo();
 		test1.showInfo();
 		System.out.println("test1.MAX : " + test1.MAX); //test1.MAX
@@ -17,7 +17,7 @@ public class Ex_5_interface_main_1 {
 		// 결론 : 자식 클래스가 구현한 인터페이스로, 받는 타입으로 사용이 가능함
 		// like upcasting
 		
-		Ex_5_interface_1 test2 = new Ex_5_interface_subClass_1();
+		Ex_05_interface_1 test2 = new Ex_05_interface_subClass_1();
 
 	}
 

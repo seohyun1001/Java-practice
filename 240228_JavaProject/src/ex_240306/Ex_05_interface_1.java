@@ -1,6 +1,6 @@
 package ex_240306;
 
-public interface Ex_5_interface_1 {
+public interface Ex_05_interface_1 {
 	
 	// 인터페이스 : 접점 / 특정의 표준, 규격
 	// ex) 110v 변환하는 컨버터
@@ -21,7 +21,8 @@ public interface Ex_5_interface_1 {
 	public final int MAX = 100; 
 	
 	// abstract
-	abstract public void showInfo(); 
+	abstract public void showInfo()
+	; 
 	
 	// default
 	public default void introduceInfo() {
