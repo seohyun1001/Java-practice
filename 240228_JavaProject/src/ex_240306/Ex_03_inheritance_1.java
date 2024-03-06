@@ -10,9 +10,9 @@ class A2 {
 	// 디폴트 생성자를 컴파일러가 안만들어주니,
 	 // 우리가 수동으로 만들기. 
 	public A2() {
-		// TODO Auto-generated constructor stub
 	}
 }
+
 
 class B extends A2 {
 	
@@ -30,7 +30,6 @@ class B extends A2 {
 	
 	// 기본 생성자 없어서, 아래의 클래스에서 오류가 남. 만들기. 
 	public B() {
-		// TODO Auto-generated constructor stub
 	}
 }
 
@@ -56,6 +55,25 @@ public class Ex_03_inheritance_1 {
 		// step over, 단순 넘기기(skip) f6
 		// 변수등을 넘어갈 때, 또는 메서드를 실행만
 		//하고 넘어갈 때. 
+		
+		
+		
+		// instanceof 연산자 예제
+		// 클래스 구조 : C -. B -> A2
+		
+		A2 test1 = new A2();
+		A2 test2 = new B();
+		A2 test3 = new C();
+		//문제점 test1,2,3의 원래의 객체를 알기가 어렵다
+		
+		boolean result1 = (test2 instanceof B) ? true : false;
+		System.out.println("test2 instanceof B : " + result1);
+		
+		boolean result2 = (test2 instanceof A2) ? true : false;
+		System.out.println("test2 instanceof A2 : " + result2);
+
+		boolean result3 = (test2 instanceof C) ? true : false;
+		System.out.println("test2 instanceof C : " + result3);
 
 	}
 
