@@ -8,6 +8,32 @@ public class Sports {
 	private String sportsPlayTime;
 	private String sportsPlace;
 	
+	
+	// getter / setter 이용
+	// 스포츠 개막 시즌
+	private Season season;
+	
+	// 등록시간 샘플
+	private String createTime;
+		
+	public Season getSeason() {
+		return season;
+	}
+
+	public void setSeason(Season season) {
+		this.season = season;
+	}
+
+	public String getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(String createTime) {
+		this.createTime = createTime;
+	}
+
+	
+	
 	// 생성자
 	public Sports(String sportsName, int sportsMemberCount, String sportsPlayTime, String sportsPlace) {
 		this.sportsName = sportsName;
@@ -42,7 +68,7 @@ public class Sports {
 	// 1) 이름, 인원수, 플레이 시간을 알려주는 기능
 	public void showInfo() {
 		System.out.println("sports name : " + this.sportsName);
-		System.out.println("member count : " + this.sportsMemberCount);
+		System.out.println("member count : " + this.sportsMemberCount + "명");
 		System.out.println("play time : " + this.sportsPlayTime);
 	}
 
@@ -53,6 +79,7 @@ public class Sports {
 
 	// Enum으로 문자열로 만들기 
 	// 3) 시즌별 개막 계절
+	
 
 	
 	
