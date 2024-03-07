@@ -29,9 +29,23 @@ public class Input_Funcs {
 		String sportsPlace = scanner.next();
 		
 		
-		System.out.println("Input the number of seasons open(in int) >>");
-		System.out.println("1:Spring, 2:Summer, 3:autumn, 4:Winter");
-		int sportsSeason = scanner.nextInt();		
+		int sportsSeason;
+		while (true) {
+            System.out.println("Input the number of seasons open (as an integer) >>");
+            System.out.println("1: Spring, 2: Summer, 3: Autumn, 4: Winter");
+
+            try {
+                sportsSeason = Integer.parseInt(scanner.next());
+
+                if (sportsSeason >= 1 && sportsSeason <= 4) {
+                    break; // 유효한 값이 입력되면 반복문 탈출
+                } else {
+                    System.out.println("Invalid input. Please enter a number between 1 and 4.");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a valid integer.");
+            }
+        }	
 		
 		
 		System.out.println("Input the number of indoor or outdoor(in string) >>");
@@ -50,13 +64,31 @@ public class Input_Funcs {
 		for(int i = 0; i < items.length; i++) {
 			items[i]= scanner.next(); 
 		}
+		
+		
+		
+		
 		System.out.println("sports name : " + sportsname);
 		System.out.println("member count : " + sportsMemberCount);
 		System.out.println("play time : " + sportsPlayTime);
 		System.out.println("place : " + sportsPlace);
-		System.out.println("open season : " + sportsSeason);
+		sportSeason(sportsSeason);
 		System.out.println("indoor or outdoor : " + sportsInOut);
 		System.out.println("members : " + members);
 		System.out.println("equipment : " + items);
 	}
+	
+	
+	public static void sportSeason(int sportsSeason) {
+		if(sportsSeason == 1) {
+			System.out.println("Season open : Spring");
+		} else if (sportsSeason == 2) {
+			System.out.println("Season open : Summer");
+		} else if (sportsSeason == 3) {
+			System.out.println("Season open : Autumn");
+		} else if (sportsSeason == 4) {
+			System.out.println("Season open : Winter");
+		}
+	}
+	
 }

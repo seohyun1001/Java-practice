@@ -25,7 +25,6 @@ public class Main2_Console_Mode {
 				
 			} else if (checkNum == 1) {
 				// 스포츠 등록하는 메서드 
-				System.out.println("스포츠 등록하기.");
 				Input_Funcs.enrollSports();
 				
 			} else {
