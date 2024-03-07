@@ -1,8 +1,8 @@
-package ex_240307;
+package ex_240307_review;
 
-public class Ex_00_sub extends Ex_00_sports implements Ex_00_interface{
+public class Sub extends Sports implements Interface{
 
-	public Ex_00_sub(String sportsName, int sportsMemberCount, String sportsPlayTime, String sportsPlace) {
+	public Sub(String sportsName, int sportsMemberCount, String sportsPlayTime, String sportsPlace) {
 		super(sportsName, sportsMemberCount, sportsPlayTime, sportsPlace);
 		
 	}

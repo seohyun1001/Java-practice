@@ -1,6 +1,6 @@
-package ex_240307;
+package ex_240307_review;
 
-public class Ex_00_sports {
+public class Sports {
 	// Sport : super
 	// 공통 멤버 변수 : 1) 이름, 2) 인원수 3) 플레이 시간 4) 운동 장소
 	private String sportsName;
@@ -9,7 +9,7 @@ public class Ex_00_sports {
 	private String sportsPlace;
 	
 	// 생성자
-	public Ex_00_sports(String sportsName, int sportsMemberCount, String sportsPlayTime, String sportsPlace) {
+	public Sports(String sportsName, int sportsMemberCount, String sportsPlayTime, String sportsPlace) {
 		this.sportsName = sportsName;
 		this.sportsMemberCount = sportsMemberCount;
 		this.sportsPlayTime = sportsPlayTime;

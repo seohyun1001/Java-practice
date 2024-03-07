@@ -1,6 +1,6 @@
-package ex_240307;
+package ex_240307_review;
 
-public interface Ex_00_interface {
+public interface Interface {
 	// 인터페이스 설계 -> 1) 상수 2) 추상 메서드
 	// 반드시 이 기능은 구현해야 하는 기능
 	// 1) 실내인지 실외인지 알려주는 기능
