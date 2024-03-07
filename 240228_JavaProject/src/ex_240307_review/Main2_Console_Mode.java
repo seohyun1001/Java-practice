@@ -17,15 +17,18 @@ public class Main2_Console_Mode {
 			int checkNum = scanner.nextInt();
 			if (checkNum == 3) {
 				System.out.println("종료합니다.");
+				scanner.close();
 				break;				
 				
 				
 			} else if(checkNum == 1) {
 				// 스포츠 등록하는 메서드
+				System.out.println("스포츠 등록하기");
 				
 				
-			} else if(checkNum == 3) {
+			} else if(checkNum == 2) {
 				// 스포츠 검색하는 메서드
+				System.out.println("스포츠 검색하기");
 				
 				
 			} else {
@@ -35,7 +38,5 @@ public class Main2_Console_Mode {
 				continue;
 			}
 		}
-
 	}
-
 }
