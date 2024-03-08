@@ -175,7 +175,34 @@ public class Ex_02_String {
 		System.out.println();
 		showArray(resultArray2);
 		
+
+		System.out.println();
 		
+		
+		// String subString(int beginindex) : beginIndex부터 시작되는 문자열을 반환
+		String subString = str10.substring(2);
+		String subString2 = str10.substring(1,3);
+		System.out.println("str10.substring(2); : " + subString);
+		// String subString(int beginindex, int lastIndex)
+		//: beginIndex부터 lastIndex(미만)까지의 문자열을 반환
+		System.out.println("str10.substring(1,3); : " + subString2);
+
+
+		System.out.println();
+		
+		
+		// String trim() : 문자열 앞뒤의 공백을 제거함
+		String str13 = "  -  -HELLO-  -  ";
+		String trimEx = str13.trim();
+		System.out.println("str13 : '" + str13 + "'");
+		System.out.println("str13.trim(); : '" + trimEx + "'");
+		// -> 응용
+		// 1) 검색시 복붙을 하는데, 공백이 섞여있거나,
+		// 대소문자 상관없이 검색할 때
+		// 2) 입력된 파일의 확장자를 기준으로 이미지 파일의 종류를 분리
+		// abc.jpg, def.png, ghi.jpeg, abcd.mov, efgh.mp4
+		// 예) 게시글 작성시 첨부파일로 사진도 업로드, 영상도 업로드
+		// 내가 올린 게시글을 출력시 이미지 로딩, 영상으로 로딩을 할지 분리
 	}
 	
 	// 베열의 요소를 출력 해주는 메서드
