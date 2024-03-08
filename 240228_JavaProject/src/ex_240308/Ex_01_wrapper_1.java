@@ -39,10 +39,33 @@ public class Ex_01_wrapper_1 {
 		int num = i4.parseInt("1000");
 		System.out.println("num : " + num);
 		
-		String num2 = "10000";
+		// static으로 선언된 메서드는
+		// -> 가급적 겁근을 클래스명으로 하는 것을 원칙으로 함
+		// 인스턴스로 접근이 가능하지만 권장x
+		// 왜? static은 클래스가 로드될 때부터 있는 메모리 위치 주소값(참조형)
+		// 인스턴스는 생성시 메모리 위지 주소값이 할당이 됨
+		String num2 = "100";
 		int num3 = Integer.parseInt(num2);
 		System.out.println("num3 : " + num2);
+		
+		
+		// 참조형 -> 기본형 메서드 이용하기
+		Integer num4 = Integer.valueOf(100);
+		int num5 = num4.intValue();
+		System.out.println("num5 : " + num5);
+		// -> 자동 언박싱
+		System.out.println("Integer num4 : " + num4 );
+		// -> Wrapper 클래스 메서드 이용하여 참조형을 기본형으로 변경
+		
+		
+		// 배열로 Integer 들을 다 담아보기
+		Integer[] arrayInteger = {i1, i3, i4, num4}; 
+		// 반복자 패턴(iterable)
+		for(Integer x:arrayInteger) {
+			System.out.println("자동 형 변환으로 x 출력하기 : " + x);
+		}
 
 	}
+	
 
 }
