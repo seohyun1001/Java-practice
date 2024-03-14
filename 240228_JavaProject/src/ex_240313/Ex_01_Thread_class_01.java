@@ -47,7 +47,7 @@ class DateTimer extends Thread {
 	}
 }
 
-public class Ex_01_Thread_class_1 {
+public class Ex_01_Thread_class_01 {
 
 	public static void main(String[] args) {
 		//자바, 스레드 기초, 
