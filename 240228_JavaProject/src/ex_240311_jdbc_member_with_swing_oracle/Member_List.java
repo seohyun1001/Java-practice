@@ -9,52 +9,76 @@ import javax.swing.table.DefaultTableModel;
  
 public class Member_List extends JFrame implements MouseListener,ActionListener{
    
+	// 동기화를 지원해주는 컬렉션의 리스트
     Vector v;  
     Vector cols;
+    
+    // 테이블 기능을 지원해주는 인스턴스
     DefaultTableModel model;
+    
+    // 표형식
     JTable jTable;
+    
+    // 스크롤
     JScrollPane pane;
+    
+    //패널은 창에 추가로 붙이는 공간
     JPanel pbtn;
     JButton btnInsert;
        
    
+    // 생성자
     public Member_List(){
+    	// 부모 JFrame의 제목을 설정하는 생성자
         super("회원관리 프로그램  v0.1.1");
         //v=getMemberList();
         //MemberDAO
+        
+        // 데이터베이스에 접근 및 crud 기능이 있음
         MemberDAO dao = new MemberDAO();
+        
+        // 디비 내용을 조회한 결과를 받아두기
+        // v = vector(순서 있는 리스트)
         v = dao.getMemberList();
         System.out.println("v="+v);
+        
+        // 각 열의 정보를 의미
+        // cols = vector 타입의 리스트
         cols = getColumn();
        
-        //public DefaultTableModel()
-        //public DefaultTableModel(int rowCount, int columnCount)
-        //public DefaultTableModel(Vector columnNames, int rowCount)
-        //public DefaultTableModel(Object[] columnNames, int rowCount)
-        //public DefaultTableModel(Vector data,Vector columnNames)
-        //public DefaultTableModel(Object[][] data,Object[] columnNames)
-       
+        
+        
         model = new DefaultTableModel(v, cols);
        
-        //JTable()
-        //JTable(int numRows, int numColumns)
-        //JTable(Object[][] rowData, Object[] columnNames)
-        //JTable(TableModel dm)
-        //JTable(TableModel dm, TableColumnModel cm)
-        //JTable(TableModel dm, TableColumnModel cm, ListSelectionModel sm)
-        //JTable(Vector rowData, Vector columnNames)
-       
-        //jTable = new JTable(v,cols);
+
+        
+        // 자바에서 지원해주는 표 형식
         jTable = new JTable(model);
+        
+        // 스크롤 기능을 해당 패널에 추가
         pane = new JScrollPane(jTable);
+        
+        //프레임이라는 창에 요소 붙이기
         add(pane);
        
+        
+        
+        // 버튼을 붙이는 패널
         pbtn = new JPanel();
+        
+        // 버튼
         btnInsert = new JButton("회원가입");
+        
+        // 버튼을 붙이는 패널에 버튼 붙이기 
         pbtn.add(btnInsert);
         add(pbtn,BorderLayout.NORTH);
        
+        
        
+        // 이벤트 핸들러 등록
+        // 인터페이스 이고, 추상 메서드를 가지고 있으니
+        // 반드시 재정의 해주기
+        // 결론) 액션의 역할 : 새로운 입력창을 불러오기
         jTable.addMouseListener(this); //리스너 등록
         btnInsert.addActionListener(this); //회원가입버튼 리스너 등록
        
@@ -95,11 +119,17 @@ public class Member_List extends JFrame implements MouseListener,ActionListener{
         new Member_List();
     }//main
     @Override
-    public void mouseClicked(MouseEvent e) {
+    public void mouseClicked(MouseEvent e) { // 클릭하면 e라는 인스턴스에 담겨있음
         // mouseClicked 만 사용
+    	//클릭시 해당 번호를 가지고 온다
         int r = jTable.getSelectedRow();
+        System.out.println("클릭시 클릭된 행번호 확인 : " + r);
+        
         String id = (String) jTable.getValueAt(r, 0);
+        System.out.println("클릭시 선택된 id 조회 : " + id);
         //System.out.println("id="+id);
+        
+        
         MemberProc mem = new MemberProc(id,this); //아이디를 인자로 수정창 생성
                
     }
