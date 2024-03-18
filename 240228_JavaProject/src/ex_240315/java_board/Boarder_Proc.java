@@ -7,6 +7,8 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -62,6 +64,55 @@ public class Boarder_Proc extends JFrame implements ActionListener {
 		this.boarder_List = boarder_List;
 
 	}// 생성자
+	
+	// 생성자, 매개변수 2개, 
+	// 순서3 
+	// 화면을 그려주는 작업.
+	public Boarder_Proc(int id,Boarder_List boarder_List){ // 수정/삭제용 생성자
+	       createUI();
+	       // 수정하기 위한 화면으로 사용해서, 글쓰기 버튼 기능 비활성화, 
+	       btnInsert.setEnabled(false);
+	       // 화면에서 안보이게 설정
+	       btnInsert.setVisible(false);
+	       this.boarder_List = boarder_List;
+	      
+	      
+	       System.out.println("id="+id);
+	      
+	       Boarder_DAO dao = new Boarder_DAO();
+	       // 하나의 게시글을 조회를 하는 기능. 
+	       Boarder_DTO vMem = dao.getBoarderDTO(id);
+	       // 순서4, 모델 박스에 담아져 있는 하나의 게시글 정보를 화면에 붙이기 작업.
+	       viewData(vMem);
+	      
+	      
+	   }//id를 가지고 생성
+	
+	// 하나의 게시글 정보를 가지고, 화면에 넣는 작업.
+	
+	// 순서5 
+	// 화면에 붙이기.
+	   private void viewData(Boarder_DTO vMem){
+	      
+	       int id = vMem.getId();
+	       String writer = vMem.getWriter();
+	       String subject = vMem.getSubject();
+	       String content = vMem.getContent();
+	       String regDate = vMem.getRegDate();
+	       int viewsCount = vMem.getViewsCount();
+	       
+//	       JTextField tfWriter, tfSubject;
+//	   	// 본문의 내용
+//	   	JTextArea tfContent;
+	      
+	       //화면에 세팅, 수정 폼에, 하나의 게시글 정보 불러오기
+	       tfWriter.setText(writer);
+	       tfSubject.setText(subject);
+	       tfContent.setText(content);
+	       
+	  
+	      
+	   }//viewData
 
 	private void createUI() {
 		this.setTitle("글쓰기 폼");
@@ -162,6 +213,7 @@ public class Boarder_Proc extends JFrame implements ActionListener {
 
 		// jTable내용 갱신 메소드 호출
 		boarder_List.jTableRefresh();
+
 	}
 
 	// 글쓰기 기능
@@ -171,55 +223,61 @@ public class Boarder_Proc extends JFrame implements ActionListener {
 		// 한명의 회원의 정보를 담아 두는 모델 객체.
 		// 잠시 스탑.
 		// 화면에서 입력 받은 , 작성자, 제목, 내용을 담고 있는 모델 박스(DTO)
-		// 임시 메모리에 저장이 되어있는것 -> DB 로 전달.
+		// 임시 메모리에 저장이 되어있는것 -> DB 로 전달. 
 		Boarder_DTO dto = getViewData();
 		// DAO(Data Access Object), 디비로 전달하는 도구. (글쓰기, 수정, 삭제도 할 예정.)
 		Boarder_DAO dao = new Boarder_DAO();
-		// 디비에 저장하고, 리턴 완료 true
+		// 디비에 저장하고, 리턴 완료 true 
 		boolean ok = dao.insertBoarder(dto);
 
 		if (ok) {
 
-			JOptionPane.showMessageDialog(this, "가입이 완료되었습니다.");
-			// 종료.
+			JOptionPane.showMessageDialog(this, "글쓰기 성공.");
+			// 종료. 
 			dispose();
 
 		} else {
 
-			JOptionPane.showMessageDialog(this, "가입이 정상적으로 처리되지 않았습니다.");
+			JOptionPane.showMessageDialog(this, "글쓰기 실패.");
 		}
 
 	}// insertBoarder
-
+	
 	// 기능: 하나의 게시글의 조회하는 목적.
-	// 게시글 작성시, 화면에 있는 글을 가지고 온다.
-	public Boarder_DTO getViewData() {
+	// 게시글 작성시, 화면에 있는 글을 가지고 온다. 
+	 public Boarder_DTO getViewData(){
+	      
+	       //화면에서 사용자가 입력한 내용을 얻는다.
+		 Boarder_DTO dto = new Boarder_DTO();
+		 	// JTextField tfWriter, tfSubject;
+			// 본문의 내용
+			//JTextArea tfContent;
+	       String writer = tfWriter.getText();
+	       String subject = tfSubject.getText();
+	       String content = tfContent.getText();
+	       // 등록 날짜, 자동
+	       String regDate = LocalDate.now().toString();
+	       String regTime = LocalTime.now().toString();
+	       String regDateTimeString = regDate + regTime ;
+//	       String regDate2 = regDate.toString();
+	       // 조회수 카운트, 자동
+	       int viewsCount = 0;
+	     
+	      
+	       // 입력 받은 값을 넣는 작업. 
+	       //dto : 게시글 하나 작성하기 위해 필요한 내용을 담고 있다.
+	       dto.setWriter(writer);
+	       dto.setSubject(subject);
+	       dto.setContent(content);
+	       // 우리가 자동으로 넣어 주기로 했었음. 
+	       dto.setRegDate(regDateTimeString);
+	       dto.setViewsCount(viewsCount);
+	       
+	       // 임시로 모델 박스에, 화면에서 입력받은 내용을 메모리 임시 저장. 
+	      
+	      
+	       return dto;
+	   } //
+	 
 
-		// 화면에서 사용자가 입력한 내용을 얻는다.
-		Boarder_DTO dto = new Boarder_DTO();
-		// JTextField tfWriter, tfSubject;
-		// 본문의 내용
-		// JTextArea tfContent;
-		String writer = tfWriter.getText();
-		String subject = tfSubject.getText();
-		String content = tfContent.getText();
-		// 등록 날짜, 자동
-		String regDate = LocalDate.now().toString();
-//		       String regDate2 = regDate.toString();
-		// 조회수 카운트, 자동
-		int viewsCount = 0;
-
-		// 입력 받은 값을 넣는 작업.
-		// dto : 게시글 하나 작성하기 위해 필요한 내용을 담고 있다.
-		dto.setWriter(writer);
-		dto.setSubject(subject);
-		dto.setContent(content);
-		// 우리가 자동으로 넣어 주기로 했었음.
-		dto.setRegDate(regDate);
-		dto.setViewsCount(viewsCount);
-
-		// 임시로 모델 박스에, 화면에서 입력받은 내용을 메모리 임시 저장.
-
-		return dto;
-	} //
 }
