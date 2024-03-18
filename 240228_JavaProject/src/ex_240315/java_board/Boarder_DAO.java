@@ -69,12 +69,12 @@ public class Boarder_DAO {
 			// 날짜가 큰값이 최신 날짜임.
 			String sql = "select * from BOARDER_JAVA order by regDate desc";
 			ps = con.prepareStatement(sql);
-			// 메서드 가 실행이되면, 데이터베이스 조회한 내용이 rs 인스턴스에 임시로 저장됨. 
+			// 메서드 가 실행이되면, 데이터베이스 조회한 내용이 rs 인스턴스에 임시로 저장됨.
 			// 저장이 되는 포맷은 마치 엑셀 표와 비슷하다고 생각하시면됨.
 			rs = ps.executeQuery();
 
 			// rs 는 0행에서 대기하고 있다가, next 만나면, 다음행 1행으로 넘어가
-			// 각 컬럼별로 데이터를 가지고 오는 역할. 
+			// 각 컬럼별로 데이터를 가지고 오는 역할.
 			while (rs.next()) {
 				int id = rs.getInt("id");
 				String writer = rs.getString("writer");
@@ -106,7 +106,7 @@ public class Boarder_DAO {
 
 		Connection con = null;
 		PreparedStatement ps = null;
-		// 조회시 만 사용할 예정. 
+		// 조회시 만 사용할 예정.
 		ResultSet rs = null;
 
 		try {
@@ -158,11 +158,11 @@ public class Boarder_DAO {
 	}
 
 	/** 게시글 등록 */
-	// Boarder_DTO dto : 하나의 게시글의 모델, 
-	// 각 글을 쓸 때, Boarder_DTO dto 하나씩 사용이됨. 
+	// Boarder_DTO dto : 하나의 게시글의 모델,
+	// 각 글을 쓸 때, Boarder_DTO dto 하나씩 사용이됨.
 	public boolean insertBoarder(Boarder_DTO dto) {
 
-		// 상태 변수로 사용 중, 글쓰기 메서드가 완료가 되면, true 변경 할 예정. 
+		// 상태 변수로 사용 중, 글쓰기 메서드가 완료가 되면, true 변경 할 예정.
 		boolean ok = false;
 
 		Connection con = null; // 연결
@@ -200,43 +200,78 @@ public class Boarder_DAO {
 		return ok;
 	}// insertMmeber
 
-	//하나의 게시글 정보 가져오는 기능
+	// 하나의 게시글 정보 가져오는 기능
 
-    public Boarder_DTO getBoarderDTO(int id){
+	public Boarder_DTO getBoarderDTO(int id) {
 
-    	// 임시로 메모리 담아둘 공간. 
-    	Boarder_DTO dto = new Boarder_DTO();
+		// 임시로 메모리 담아둘 공간.
+		Boarder_DTO dto = new Boarder_DTO();
 
-        Connection con = null;       //연결
-        PreparedStatement ps = null; //명령
-        ResultSet rs = null;         //결과
+		Connection con = null; // 연결
+		PreparedStatement ps = null; // 명령
+		ResultSet rs = null; // 결과
 
-        try {
+		try {
 
-            con = getConn();
-            String sql = "select * from BOARDER_JAVA where id=?";
-            // sql 를 전달하는 기능. 
-            ps = con.prepareStatement(sql);
-            // ? 동적 매개변수에 값을 넣기
-            ps.setInt(1, id);
-           // 조회시 사용하는 메서드
-            rs = ps.executeQuery();
-           // 하나의 게시글을 받아와서, 각 컬럼을 반복문으로 순회하면서, 값을 가져오기. 
-            // 가져온 데이터를, dto 라는 게시글을 담는 박스에 담기. 
-            if(rs.next()){
-                dto.setId(rs.getInt("id"));
-                dto.setWriter(rs.getString("writer"));
-                dto.setSubject(rs.getString("subject"));
-                dto.setContent(rs.getString("content"));
-                dto.setRegDate(rs.getString("regDate"));
-                dto.setViewsCount(rs.getInt("viewsCount"));
+			con = getConn();
+			String sql = "select * from BOARDER_JAVA where id=?";
+			// sql 를 전달하는 기능.
+			ps = con.prepareStatement(sql);
+			// ? 동적 매개변수에 값을 넣기
+			ps.setInt(1, id);
+			// 조회시 사용하는 메서드
+			rs = ps.executeQuery();
+			// 하나의 게시글을 받아와서, 각 컬럼을 반복문으로 순회하면서, 값을 가져오기.
+			// 가져온 데이터를, dto 라는 게시글을 담는 박스에 담기.
+			if (rs.next()) {
+				dto.setId(rs.getInt("id"));
+				dto.setWriter(rs.getString("writer"));
+				dto.setSubject(rs.getString("subject"));
+				dto.setContent(rs.getString("content"));
+				dto.setRegDate(rs.getString("regDate"));
+				dto.setViewsCount(rs.getInt("viewsCount"));
 
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }      
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
-        return dto;    
-    }
+		return dto;
+	}
+
+	// 게시글 삭제
+	// 예전에는, 탈퇴 여부 상태 변수를 이용해서, 회원정보를 가지고 있었다면,
+	// 이제는 개인정보처리방침이 변경이되어서, 회원이 요청, 탈퇴시,
+	// 해당 데이터를 어떻게 처리할지는 명확히 명시 해야함.
+	// 나의 정보를 모두 삭제 도 가능하게 해주어야하고,
+	// 개인정보포털 사이트,
+	// https://www.privacy.go.kr/front/per/inf/perInfStep01.do
+	// 공식 문서 작성 가이드 이용해서, 반드시 만들어야함.
+	// 사이트, 모바일 , 게시.
+	// 게시글, 로그인 후 -> 작성.
+	// 내가 작성한 글만 , 수정, 삭제 할수 있음.
+	// 로그인, 회원가입 없어서, 일단, 단순 삭제만 구현중.
+	public boolean deleteBoarder(int id) {
+
+		boolean ok = false;
+		Connection con = null;
+		PreparedStatement ps = null;
+
+		try {
+			con = getConn();
+			String sql = "delete from BOARDER_JAVA where id=?";
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, id);
+
+			int r = ps.executeUpdate(); // 실행 -> 삭제
+
+			if (r > 0)
+				ok = true; // 삭제됨;
+
+		} catch (Exception e) {
+			System.out.println(e + "-> 오류발생");
+		}
+		return ok;
+	}
 
 }
