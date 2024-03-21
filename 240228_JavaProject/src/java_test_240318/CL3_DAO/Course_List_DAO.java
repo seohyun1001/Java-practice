@@ -1,4 +1,4 @@
-package java_test_240318;
+package java_test_240318.CL3_DAO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,6 +9,8 @@ import java.util.Vector;
 
 import javax.naming.spi.DirStateFactory.Result;
 import javax.xml.crypto.Data;
+
+
 import javax.swing.table.DefaultTableModel;
 
 public class Course_List_DAO {
@@ -20,17 +22,7 @@ public class Course_List_DAO {
 	private static final String PASS = "oracle";
 
 	
-	//
-	Course_List_LST course_List_LST;
 
-	public Course_List_DAO() {
-
-	};
-
-	public Course_List_DAO(Course_List_LST course_List_LST) {
-		this.course_List_LST = course_List_LST;
-		System.out.println("DAO=>" + course_List_LST);
-	}
 
 	/** DB연결 메소드 */
 	public Connection getConn() {

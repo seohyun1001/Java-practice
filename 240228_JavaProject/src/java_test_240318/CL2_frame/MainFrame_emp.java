@@ -10,26 +10,24 @@ import java.awt.event.ActionListener;
 import java.util.Vector;
 import java.awt.event.ActionEvent;
 
-public class MainFrame extends JFrame {
+public class MainFrame_emp extends JFrame {
     private JComboBox<String> majorComboBox;
     private JComboBox<String> classificationComboBox;
     private JComboBox<String> keywordComboBox;
     private JTextField keywordTextField;
     private JButton searchButton;
-    private JTextField courseCodeTextField;
-    private JButton applyButton;
     private JTable table;
     private DefaultTableModel tableModel;
     private Course_List_DAO courseDao;
 
-    public MainFrame() {
-        setTitle("수강신청 - 학생용");
+    public MainFrame_emp() {
+        setTitle("수강신청 - 교직원용");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(800, 600);
-        setLayout(new GridLayout(4, 1)); // 3행 1열의 그리드 레이아웃으로 변경
+        setLayout(new GridLayout(3, 1)); // 3행 1열의 그리드 레이아웃으로 변경
 
         // 상단 라벨
-        JLabel titleLabel = new JLabel("수강신청");
+        JLabel titleLabel = new JLabel("수강신청 관리");
         titleLabel.setFont(new Font("gothic", Font.BOLD, 24));
         JPanel titlePanel = new JPanel();
         titlePanel.add(titleLabel);
@@ -41,14 +39,9 @@ public class MainFrame extends JFrame {
         searchPanel.setPreferredSize(new Dimension(800, 50)); // 높이 설정
         add(searchPanel); // 두 번째 행에 추가
 
-        // 수강신청 패널
-        JPanel registrationPanel = createRegistrationPanel();
-        registrationPanel.setPreferredSize(new Dimension(800, 50)); // 높이 설정
-        add(registrationPanel); // 세 번째 행에 추가
-
         // 테이블 초기화
         initializeTable();
-        add(new JScrollPane(table)); // 테이블을 네 번째 행에 추가
+        add(new JScrollPane(table)); // 테이블을 세 번째 행에 추가
 
         setVisible(true);
     }
@@ -90,21 +83,6 @@ public class MainFrame extends JFrame {
         return searchPanel;
     }
 
-    private JPanel createRegistrationPanel() {
-        JPanel registrationPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-
-        JLabel courseCodeLabel = new JLabel("과목코드:");
-        courseCodeTextField = new JTextField();
-        courseCodeTextField.setPreferredSize(new Dimension(150, 30));
-
-        applyButton = new JButton("신청");
-        registrationPanel.add(courseCodeLabel);
-        registrationPanel.add(courseCodeTextField);
-        registrationPanel.add(applyButton);
-
-        return registrationPanel;
-    }
-
     private void initializeTable() {
         // Create table with columns
         String[] columns = {"구분", "과목코드", "과목명", "교수명", "학점",
@@ -131,7 +109,7 @@ public class MainFrame extends JFrame {
     }
 
     public static void main(String[] args) {
-//        SwingUtilities.invokeLater(MainFrame::new);
+//        SwingUtilities.invokeLater(MainFrame_emp::new);
     	SwingUtilities.invokeLater(LoginFrame::new);
     }
 }

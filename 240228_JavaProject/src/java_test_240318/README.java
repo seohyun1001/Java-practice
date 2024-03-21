@@ -29,15 +29,6 @@ public class README {
 	// (24933333, '직원1', '경영학과', 'aaa111');
 	
 	
-	
-	// LIST
-	
-	
-	
-	// DAO
-	
-	
-	
 	// DTO	
 //	CREATE TABLE COURSE_LIST (
 //		    division    VARCHAR2(20) NOT NULL,
@@ -50,13 +41,28 @@ public class README {
 //		    limitCount  NUMBER(10) NOT NULL,
 //		    grade       NUMBER(10) NOT NULL);
 //
-//		COMMIT;
-//
-//		SELECT * FROM COURSE_LIST;
-//	
+
+//	CREATE TABLE STUDENT_LIST(
+//    studentNum NUMBER(10) NOT NULL PRIMARY KEY,
+//    studentName VARCHAR2(20) NOT NULL,
+//    studentMajor VARCHAR2(20) NOT NULL,
+//    studentGrade NUMBER(10) NOT NULL,
+//    studentPwd VARCHAR2(30) NOT NULL);
 	
+//  CREATE TABLE EMPLOYEE_LIST(
+//    employeeNum NUMBER(10) NOT NULL PRIMARY KEY,
+//    employeeName VARCHAR2(20) NOT NULL,
+//    employeeDEPT VARCHAR2(20) NOT NULL,
+//    employeePwd VARCHAR2(30) NOT NULL);
 	
-	// PROCCESS
+
+
+	// 구현한 것
+	// 로그인 화면
+	// -> 학생 리스트와 직원 리스트의 데이터베이스를 이용하여
+	// -> 학생이 로그인 하면 학생용 수강신청 화면으로,
+	// -> 교수 또는 교직원이 로그인 하면 수강신청 관리 화면으로 이동
+	
 	
 	
 	

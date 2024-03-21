@@ -1,4 +1,4 @@
-package java_test_240318;
+package java_test_240318.CL3_DAO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,7 +11,7 @@ import javax.naming.spi.DirStateFactory.Result;
 import javax.xml.crypto.Data;
 import javax.swing.table.DefaultTableModel;
 
-public class Student_List_DAO2 {
+public class Student_List_DAO {
 
 	private static final String DRIVER = "oracle.jdbc.driver.OracleDriver";
 	private static final String URL = "jdbc:oracle:thin:@localhost:1522:XE";
@@ -20,7 +20,7 @@ public class Student_List_DAO2 {
 	private static final String PASS = "oracle";
 
 	
-	public Student_List_DAO2() {
+	public Student_List_DAO() {
 
 	};
 
@@ -41,7 +41,7 @@ public class Student_List_DAO2 {
 	
 	
 	
-	/** 게시판 전체 리스트 출력 */
+	/** 학생 전체 리스트 출력 */
 	public Vector getStudentList() {
 		// 임시 데이터를 담을 저장 공간(배열) 만들기
 
@@ -83,7 +83,7 @@ public class Student_List_DAO2 {
 		}
 		return studentDataVector;
 
-	} // getCourceList
+	} // getStudentList
 	
 	
 
@@ -137,7 +137,7 @@ public class Student_List_DAO2 {
 					e.printStackTrace();
 				}
 		}
-	} // listSelectAll
+	} // studentListSelectAll
 	
 	
 
